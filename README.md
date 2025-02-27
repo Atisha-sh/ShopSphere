@@ -1,283 +1,169 @@
-# ShopSphere eCommerce Platform
+## ShopSphere: A Seamless Shopping Experience Powered by the MERN Stack
 
-> eCommerce platform built with the MERN stack & Redux.
+**ShopSphere** is a full-stack application designed to transform your online shopping experience. Built with the MERN stack (MongoDB, Express.js, React, Node.js), it leverages Redux Toolkit for efficient state management and Material UI for a sleek, user-friendly interface. This project offers a robust platform for both users and admins, packed with essential features for a seamless experience.
 
-This is the course project for my [MERN eCommerce From Scratch](https://www.udemy.com/course/mern-ecommerce) course
+![ecommerce-homepage](https://github.com/RishiBakshii/mern-ecommerce/blob/main/frontend/src/assets/images/front.png?raw=true)
+<!-- ![ecommerce-banner](https://github.com/RishiBakshii/mern-ecommerce/blob/main/frontend/src/assets/images/banner4.jpg?raw=true) -->
+![ecommerce-banner](https://github.com/RishiBakshii/mern-ecommerce/blob/main/frontend/src/assets/images/banner3.jpg?raw=true)
 
-![screenshot](https://github.com/bradtraversy/proshop_mern/blob/master/uploads/Screen%20Shot%202020-09-29%20at%205.50.52%20PM.png)
 
-## Features
+# **Features**
 
-- Full featured shopping cart
-- Product reviews and ratings
-- Top products carousel
-- Product pagination
-- Product search feature
-- User profile with orders
-- Admin product management
-- Admin user management
-- Admin Order details page
-- Mark orders as delivered option
-- Checkout process (shipping, payment method, etc)
-- PayPal / credit card integration
-- Database seeder (products & users)
+### **User:**
+- **Product Reviews:**
+  - Write, edit, and delete reviews.
+  - Instant updates on ratings and star percentages.
+  
+- **Wishlist:**
+  - Add, remove, and annotate products with personalized notes.
+  
+- **Order Management:**
+  - Create new orders and view order history.
+  
+- **Profile Management:**
+  - Manage email, username, and multiple addresses.
+  
+- **Shopping Cart:**
+  - Add products, adjust quantities, and view subtotals.
 
-## Note on Issues
+### **Admin:**
+- **Product Management:**
+  - Add, edit, delete, and soft-delete products.
+  - Manage product attributes like name and stock.
+  
+- **Order Management:**
+  - View and update order details and status.
 
-Please do not post issues here that are related to your own code when taking the course. Add those in the Udemy Q/A. If you clone THIS repo and there are issues, then you can submit
+### **Security & User Experience:**
+- **Secure Authentication:**
+  - Login, signup, OTP verification, password reset, and logout.
 
-## Usage
+- **Intuitive Interface:**
+  - Powered by Material UI for a visually appealing and user-friendly experience.
 
-### ES Modules in Node
+### **Scalability:**
+- **Built for Growth:**
+  - Scalable architecture to handle increasing user demands.
 
-We use ECMAScript Modules in the backend in this project. Be sure to have at least Node v14.6+ or you will need to add the "--experimental-modules" flag.
 
-Also, when importing a file (not a package), be sure to add .js at the end or you will get a "module not found" error
+# **Project Setup**
 
-You can also install and setup Babel if you would like
+### Prerequisites
+- Node.js ( version v21.1.0 or later )
+- MongoDB installed and running locally
 
-### Env Variables
+### Clone the project
 
-Create a .env file in then root and add the following
-
+```bash
+  git clone https://github.com/RishiBakshii/mern-ecommerce.git
 ```
-NODE_ENV = development
-PORT = 5000
-MONGO_URI = your mongodb uri
-JWT_SECRET = 'abc123'
-PAYPAL_CLIENT_ID = your paypal client id
+
+### Navigate to the project directory
+
+```bash
+  cd mern-ecommerce
 ```
 
-### Install Dependencies (frontend & backend)
+### Install dependencies for frontend and backend separately
+**Tip:** To efficiently install dependencies for both frontend and backend simultaneously, use split terminals.
 
-```
-npm install
+Install frontend dependencies
+```bash
 cd frontend
 npm install
 ```
 
-### Run
+Install backend dependencies
 
-```
-# Run frontend (:3000) & backend (:5000)
-npm run dev
-
-# Run backend only
-npm run server
-```
-
-## Build & Deploy
-
-```
-# Create frontend prod build
-cd frontend
-npm run build
-```
-
-There is a Heroku postbuild script, so if you push to Heroku, no need to build manually for deployment to Heroku
-
-### Seed Database
-
-You can use the following commands to seed the database with some sample users and products as well as destroy all data
-
-```
-# Import data
-npm run data:import
-
-# Destroy data
-npm run data:destroy
-```
-
-```
-Sample User Logins
-
-admin@example.com (Admin)
-123456
-
-john@example.com (Customer)
-123456
-
-jane@example.com (Customer)
-123456
-```
-
-# Docker Architecture Diagram
-
-![Docker Architecture Diagram](https://github.com/taufiqpsumarna/proshop_mern_dockerized/blob/master/uploads/Docker.png)
-
-In this project we create replicas for backend and frontend each two of them, you can modified replicas count or disable it by commented out in docker-compose.yml file:
-
-```
-
-...
-#deploy:
-#      replicas: 2
-...
-
-```
-
-# Docker Configuration
-
-Docker instruction created by Taufiq 😁 shout-out to @bradtraversy for the application !
-
-``These instructions use Docker version 20.10.17, build 100c701 and Docker Compose version v2.7.0 may be different approach in future if using newer version of docker engine and docker compose.``
-
-### Pre requirerites
-
-1. Make sure you has created .env file on this root directory, follow instruction above or use .env.example
-2. You have some knowledge about Docker *just kidding you can use this repo as your learning material
-
-# Build Docker Images
-
-You may want to build Docker images manually or simply skip this step for using the docker image that already uploaded to my dockerhub registry
-
-### Build Frontend Docker Images
-
-```
-cd frontend
-docker build -t <your_dockerhub_username>/proshop-frontend .
-```
-
-### Build Backend Docker Images
-
-```
+```bash
 cd backend
-docker build -t <your_dockerhub_username>/proshop-backend .
+npm install
 ```
 
-# Update docker-compose.yml
 
-### Docker Compose Frontend Services, change to your docker image name
+### Environment Variables
+**Backend**
+- Create a `.env` file in the `backend` directory.
+- Add the following variables with appropriate values
+```bash
+# Database connection string
+MONGO_URI="mongodb://localhost:27017/your-database-name"
 
-```
-...
-proshop-frontend-app:
-    image: <your_dockerhub_username>/proshop-frontend:latest
-...
-```
+# Frontend URL (adjust if needed)
+ORIGIN="http://localhost:3000"
 
-### Docker Compose Frontend Services, change to your docker image name
+# Email credentials for sending password resets and OTPs
+EMAIL="your-email@example.com"
+PASSWORD="your-email-password"
 
-```
-...
-proshop-backend-app:
-    image: <your_dockerhub_username>/proshop-backend:latest
-...
-```
+# Token and cookie expiration settings
+LOGIN_TOKEN_EXPIRATION="30d"  # Days
+OTP_EXPIRATION_TIME="120000"  # Milliseconds
+PASSWORD_RESET_TOKEN_EXPIRATION="2m"  # Minutes
+COOKIE_EXPIRATION_DAYS="30"    # Days
 
-# Firing up docker container
+# Secret key for jwt security
+SECRET_KEY="your-secret-key"
 
-```
-#Running container foreground
-docker compose up 
-
-#Running container background
-docker compose up -d
-```
-
-# How To Seed Database On Backend Container
-
-Make sure all docker container is running up then you can access the backend container like this:
-
-```
-docker ps
-docker exec -it <backend-container-name> sh
-
-# Import data
-node seeder
-
-# Destroy data
-node seeder -d
+# Environment (production/development)
+PRODUCTION="false" # Initially set to false for development
 ```
 
-# SSL Nginx Reverse Proxy Guide
-
-1. Create DNS record using Public IP docker server.
-2. Update server name in nginx/nginx.conf
-```
-server {
-    listen 80;
-    server_name {domain}; #Change with your domain or subdomain ex: shop.example.com
-    ...
-}
-...
-...
-...
-server {
-    listen 443 ssl;
-    server_name {domain};  #Change with your domain or subdomain ex: shop.example.com
-}
-```
-3. Request new certificate
-    - First you may need to remove HTTPS nginx config block in nginx/nginx.conf
-
-    ```
-    ...
-    #HTTPS Access Start
-    ...
-    ...
-    ...
-    #HTTPS Access End
-    ...
-    ```
-    - Dry run certificate request ``` docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ --dry-run -d {domain} ``` replace with your own domain and you should get a success message like "The dry run was successful".
-    - Then run command for request new certificate ``` docker compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot --email {email} --agree-tos --no-eff-email -d {domain} ``` replace with your own email and domain
-    - After request new certificate we bring back HTTPS nginx config block in nginx/nginx.conf (Don't forget to change {domain} for nginx loading ssl certificates)
-
-    ```
-    ...
-    #HTTPS Access Start
-    ssl_certificate /etc/letsencrypt/live/{domain}/fullchain.pem; #Replace with your domain name
-    ssl_certificate_key /etc/letsencrypt/live/{domain}/privkey.pem; #Replace with your domain name
-    #HTTPS Access End
-    ...
-    ```
-
-4. Fire up your application ``` docker-compose up -d ```
-
-### Troubleshooting
-
-- Make sure you have firewall allowing access to port 80 and port 443
-- Check if there any typos in configuration files
-- Run docker container with ``` docker-compose up ``` it make easier for debugging
-
-# Notes
-
-You may need to check the docker-compose.yml before start up the docker container, and look to docker architecture diagram first.
-
-- If you need connect to mongodb just uncomment the following line in the docker-compose.yml file
-
-```
-...
-  mongodb:
-    image: mongo:4.4.11
-    container_name: mongodb-srv
-    volumes:
-    - ./proshop-app-data:/data/db
-    #Enable port if you need to connect the mongodb
---> #ports:          <--
---> #- "27017:27017" <--
-    networks:
-      - proshop-net
-...
+**Frontend**
+- Create a `.env` file in the `frontend` directory
+- Add the following variable:
+```bash
+# Backend URL (adjust if needed)
+REACT_APP_BASE_URL="http://localhost:8000" 
 ```
 
-- If you want to deploy this application to your VPS or cloud VM, make sure you have updated the nginx.conf in the nginx folder before building or using the frontend image
+**Important**
+- Replace all placeholders (e.g., your_database_name, your_email) with your actual values.
+- Exclude the `.env` file from version control to protect sensitive information.
 
+### Data seeding
+- **Get started quickly with pre-populated data**: Populate your database with sample users, products, reviews, and carts, enabling you to test functionalities without manual data entry.
+
+**Steps**:
+- Open a new terminal window.
+- Navigate to the `backend` directory: `cd backend`
+- Run the seeding script: `npm run seed` ( This script executes the `seed.js` file within the `seed` subdirectory equivalent to running `node seed/seed.js` )
+### Running Development Servers
+
+**Important:**
+
+- **Separate terminals**: Run the commands in separate terminal windows or use `split terminal` to avoid conflicts.
+- **Nodemon required**: Ensure you have `nodemon` installed globally to run the backend development servers using `npm run dev`. You can install it globally using `npm install -g nodemon`.
+
+#### Start the backend server
+- Navigate to the `backend` directory: `cd backend`
+- Start the server: `npm run dev` (or npm start)
+- You should see a message indicating the server is running, usually on port 8000.
+     
+#### Start the frontend server:
+- Navigate to the `frontend` directory: `cd frontend`
+- Start the server: `npm start`
+- You should see a message indicating the server is running, usually on port 3000.
+
+### Login with demo account (Optional)
+- After successfully seeding the database, you can now explore the application's functionalities using pre-populated sample data.
+- here are the `login credentials`
+```bash
+  email: demo@gmail.com
+  pass: helloWorld@123
 ```
-...
-server {
-    listen 80;
-    server_name localhost;  #Change with your domain or subdomain ex: shop.example.com
-...
-```
 
-For more details about docker you can access the official documentation:
-<https://docs.docker.com/>
+- **Please Note**: While the demo account provides a convenient way to explore many features, it has some limitations:
+    - **Password Reset and OTP Verification**: Due to security reasons, the demo account uses a non-real email address. Therefore, password reset and OTP verification functionalities are not available for this account.
 
-## Reference
+    **What this means**:
+    - You cannot request a password reset or receive verification codes on the demo email address.
+    - To test password reset and OTP verification flows, you need to create a genuine account with a valid email address.
 
-### Docker Nginx Certbot
-
-- <https://mindsers.blog/post/https-using-nginx-certbot-docker/>
-- <https://www.agiksetiawan.com/posts/how-to-setup-nginx-free-ssl-using-lets-encrypt-with-certbot-in-docker/>
+    **What to do?**
+    - If you're primarily interested in exploring other functionalities like wishlist, cart, and order history, the demo account is sufficient.
+    - To test password reset and OTP verification, create a personal account with a valid email address.
+### Accessing the Application
+Once both servers are running, you can access them at the following URL's:
+- Backend: http://localhost:8000
+- Frontend: http://localhost:3000
