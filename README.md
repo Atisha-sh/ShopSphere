@@ -1,169 +1,197 @@
-## ShopSphere: A Seamless Shopping Experience Powered by the MERN Stack
+# eCommerce Platform Project - MERN Stack
 
-**ShopSphere** is a full-stack application designed to transform your online shopping experience. Built with the MERN stack (MongoDB, Express.js, React, Node.js), it leverages Redux Toolkit for efficient state management and Material UI for a sleek, user-friendly interface. This project offers a robust platform for both users and admins, packed with essential features for a seamless experience.
+Welcome to the eCommerce Platform Project built using the MERN (MongoDB, Express.js, React, Node.js) Stack. This project provides a robust and full-featured online shopping platform with various functionalities to enhance the user experience.
 
-![ecommerce-homepage](https://github.com/RishiBakshii/mern-ecommerce/blob/main/frontend/src/assets/images/front.png?raw=true)
-<!-- ![ecommerce-banner](https://github.com/RishiBakshii/mern-ecommerce/blob/main/frontend/src/assets/images/banner4.jpg?raw=true) -->
-![ecommerce-banner](https://github.com/RishiBakshii/mern-ecommerce/blob/main/frontend/src/assets/images/banner3.jpg?raw=true)
+**Live App Demo** : [https://mern-shop-abxs.onrender.com/](https://mern-shop-abxs.onrender.com/)</br>
+Note: Please be aware that Render's free tier will automatically shut down after 15 minutes of inactivity. Consequently, the first request after reactivation may experience a delay, but subsequent requests will be faster.
 
+## Features
 
-# **Features**
+- **Full-Featured Shopping Cart**: Seamless shopping cart functionality for users to add, remove, and manage products.
+- **Product Reviews and Ratings**: Users can leave reviews and provide ratings for products.
+- **Top Products Carousel**: Display a carousel of top-rated or featured products.
+- **Product Pagination**: Navigate through products efficiently with pagination.
+- **Product Search Feature**: Easily search for products based on keywords.
+- **User Profile with Orders**: Users can create profiles and track their order history.
+- **Admin Dashboard**: Comprehensive dashboard for administrators to manage admins, products, users, and orders.
+- **Admin Admin Management**: Manage admin accounts.
+- **Admin Product Management**: Add, edit, and delete products from the platform.
+- **Admin User Management**: Manage user accounts.
+- **Admin Order Details Page**: Access detailed information about each order.
+- **Mark Orders as Delivered Option**: Ability to update order status to "delivered."
+- **Checkout Process**: Seamless checkout with options for shipping and payment methods.
+- **Razorpay Integration**: Secure payment processing through Razorpay.
+- **Database Seeder**: Easily populate the database with sample products and users.
 
-### **User:**
-- **Product Reviews:**
-  - Write, edit, and delete reviews.
-  - Instant updates on ratings and star percentages.
-  
-- **Wishlist:**
-  - Add, remove, and annotate products with personalized notes.
-  
-- **Order Management:**
-  - Create new orders and view order history.
-  
-- **Profile Management:**
-  - Manage email, username, and multiple addresses.
-  
-- **Shopping Cart:**
-  - Add products, adjust quantities, and view subtotals.
-
-### **Admin:**
-- **Product Management:**
-  - Add, edit, delete, and soft-delete products.
-  - Manage product attributes like name and stock.
-  
-- **Order Management:**
-  - View and update order details and status.
-
-### **Security & User Experience:**
-- **Secure Authentication:**
-  - Login, signup, OTP verification, password reset, and logout.
-
-- **Intuitive Interface:**
-  - Powered by Material UI for a visually appealing and user-friendly experience.
-
-### **Scalability:**
-- **Built for Growth:**
-  - Scalable architecture to handle increasing user demands.
-
-
-# **Project Setup**
+## Getting Started
 
 ### Prerequisites
-- Node.js ( version v21.1.0 or later )
-- MongoDB installed and running locally
 
-### Clone the project
+1. Fork the repository to your GitHub account.
+2. Clone the forked repository to your local machine
 
 ```bash
-  git clone https://github.com/RishiBakshii/mern-ecommerce.git
+git clone https://github.com/your-username/MERN-eCommerce.git
 ```
 
-### Navigate to the project directory
-
 ```bash
-  cd mern-ecommerce
+cd MERN-eCommerce
 ```
 
-### Install dependencies for frontend and backend separately
-**Tip:** To efficiently install dependencies for both frontend and backend simultaneously, use split terminals.
+3. Create a MongoDB database and obtain your MongoDB URI from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+4. Create a Razorpay account and obtain your Key ID and Key Secret from [Razorpay](https://razorpay.com/).
+5. Create a Brevo account and generate a new SMTP Key from [Brevo](https://www.brevo.com/)
 
-Install frontend dependencies
+### Env Variables
+
+1. Rename the `.env.example` file to `.env` and add the following environment variables:
+
+```dotenv
+NODE_ENV=development
+PORT=5000
+JWT_SECRET=ADD_YOUR_JWT_SECRET_HERE
+MONGO_URI=ADD_YOUR_MONGO_URI_HERE
+RAZORPAY_KEY_ID=ADD_YOUT_RAZORPAY_KEY_ID
+RAZORPAY_KEY_SECRET=ADD_YOUR_RAZORPAY_KEY_SECRET
+PAGINATION_MAX_LIMIT=12 # This will show 12 products per page; you can change it.
+EMAIL_HOST=smtp-relay.brevo.com
+EMAIL_PORT=587
+EMAIL_USER=ADD_YOUR_BREVO_LOGIN
+EMAIL_PASS=ADD_YOUR_BREVO_PASSWORD
+EMAIL_FROM=ADD_YOUR_BREVO_LOGIN
+```
+
+### Install Dependencies
+
+Run the following commands to install dependencies for both the frontend and backend:
+
 ```bash
+npm install
 cd frontend
 npm install
 ```
 
-Install backend dependencies
+### Run
+
+To run both the frontend and backend concurrently, use:
 
 ```bash
-cd backend
-npm install
+npm run dev
 ```
 
+To run only the backend:
 
-### Environment Variables
-**Backend**
-- Create a `.env` file in the `backend` directory.
-- Add the following variables with appropriate values
 ```bash
-# Database connection string
-MONGO_URI="mongodb://localhost:27017/your-database-name"
-
-# Frontend URL (adjust if needed)
-ORIGIN="http://localhost:3000"
-
-# Email credentials for sending password resets and OTPs
-EMAIL="your-email@example.com"
-PASSWORD="your-email-password"
-
-# Token and cookie expiration settings
-LOGIN_TOKEN_EXPIRATION="30d"  # Days
-OTP_EXPIRATION_TIME="120000"  # Milliseconds
-PASSWORD_RESET_TOKEN_EXPIRATION="2m"  # Minutes
-COOKIE_EXPIRATION_DAYS="30"    # Days
-
-# Secret key for jwt security
-SECRET_KEY="your-secret-key"
-
-# Environment (production/development)
-PRODUCTION="false" # Initially set to false for development
+npm run server
 ```
 
-**Frontend**
-- Create a `.env` file in the `frontend` directory
-- Add the following variable:
+## Build & Deploy
+
+To create a production build for the frontend:
+
 ```bash
-# Backend URL (adjust if needed)
-REACT_APP_BASE_URL="http://localhost:8000" 
+cd frontend
+npm run build
 ```
 
-**Important**
-- Replace all placeholders (e.g., your_database_name, your_email) with your actual values.
-- Exclude the `.env` file from version control to protect sensitive information.
+## Seed Database
 
-### Data seeding
-- **Get started quickly with pre-populated data**: Populate your database with sample users, products, reviews, and carts, enabling you to test functionalities without manual data entry.
+Use the following commands to seed the database with sample users and products, or destroy all data:
 
-**Steps**:
-- Open a new terminal window.
-- Navigate to the `backend` directory: `cd backend`
-- Run the seeding script: `npm run seed` ( This script executes the `seed.js` file within the `seed` subdirectory equivalent to running `node seed/seed.js` )
-### Running Development Servers
-
-**Important:**
-
-- **Separate terminals**: Run the commands in separate terminal windows or use `split terminal` to avoid conflicts.
-- **Nodemon required**: Ensure you have `nodemon` installed globally to run the backend development servers using `npm run dev`. You can install it globally using `npm install -g nodemon`.
-
-#### Start the backend server
-- Navigate to the `backend` directory: `cd backend`
-- Start the server: `npm run dev` (or npm start)
-- You should see a message indicating the server is running, usually on port 8000.
-     
-#### Start the frontend server:
-- Navigate to the `frontend` directory: `cd frontend`
-- Start the server: `npm start`
-- You should see a message indicating the server is running, usually on port 3000.
-
-### Login with demo account (Optional)
-- After successfully seeding the database, you can now explore the application's functionalities using pre-populated sample data.
-- here are the `login credentials`
 ```bash
-  email: demo@gmail.com
-  pass: helloWorld@123
+# Import data
+npm run data:import
+
+# Destroy data
+npm run data:destroy
 ```
 
-- **Please Note**: While the demo account provides a convenient way to explore many features, it has some limitations:
-    - **Password Reset and OTP Verification**: Due to security reasons, the demo account uses a non-real email address. Therefore, password reset and OTP verification functionalities are not available for this account.
+## Sample User Logins
 
-    **What this means**:
-    - You cannot request a password reset or receive verification codes on the demo email address.
-    - To test password reset and OTP verification flows, you need to create a genuine account with a valid email address.
+- **Live Admin Dashboard Login:**: [https://mern-shop-abxs.onrender.com/admin/login](https://mern-shop-abxs.onrender.com/admin/login)
 
-    **What to do?**
-    - If you're primarily interested in exploring other functionalities like wishlist, cart, and order history, the demo account is sufficient.
-    - To test password reset and OTP verification, create a personal account with a valid email address.
-### Accessing the Application
-Once both servers are running, you can access them at the following URL's:
-- Backend: http://localhost:8000
-- Frontend: http://localhost:3000
+  - Email: admin@admin.com
+  - Password: admin123
+
+- **Live Customer Logins:**: [https://mern-shop-abxs.onrender.com/login](https://mern-shop-abxs.onrender.com/login)
+  - John Doe
+    - Email: john@email.com
+    - Password: john123
+  - Alice Smith
+    - Email: alice@email.com
+    - Password: alice123
+
+Feel free to explore and customize this eCommerce platform for your specific needs. Happy coding🤩!
+
+# Contributing to the eCommerce Platform Project
+
+We welcome and appreciate contributions from the community to enhance and improve the eCommerce Platform Project. Whether you're a developer, designer, tester, or someone with valuable feedback, your input is valuable. Here's how you can contribute:
+
+## Getting Started
+
+1. Fork the repository to your GitHub account.
+
+2. Clone the forked repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/MERN-eCommerce.git
+   ```
+
+3. Navigate to the project directory:
+
+   ```bash
+   cd MERN-eCommerce
+   ```
+
+4. Create a new branch for your contributions:
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   git checkout -b issues/your-issue-name
+   ```
+
+## Making Changes
+
+1. Implement your changes and improvements.
+
+2. Ensure that your changes adhere to the project's coding style and conventions.
+
+3. Test your changes thoroughly to avoid introducing bugs.
+
+4. Update the project documentation if necessary.
+
+## Committing Changes
+
+1. Commit your changes with a descriptive commit message:
+
+   ```bash
+   git add .
+   git commit -m "Add your descriptive commit message here"
+   ```
+
+2. Push your changes to your forked repository:
+
+   ```bash
+   git push origin feature/your-feature-name
+   git push origin issues/your-issue-name
+   ```
+
+## Creating a Pull Request (PR)
+
+1. Visit your forked repository on GitHub.
+
+2. Switch to the branch containing your changes.
+
+3. Click on the "New Pull Request" button.
+
+4. Provide a clear title and description for your pull request, explaining the purpose and scope of your changes.
+
+5. Submit the pull request.
+
+## Code Review
+
+Your contribution will be reviewed by the project maintainers. Be prepared to address any feedback or suggestions to ensure the quality and compatibility of your changes.
+
+## Thank You!
+
+Thank you for considering contributing to the eCommerce Platform Project. Your efforts help make this project better for everyone. If you have any questions or need assistance, feel free to reach out through the issue tracker or discussions. Happy coding🤩!
